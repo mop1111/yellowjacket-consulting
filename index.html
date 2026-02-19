@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yellowjacket Consulting | Cybersecurity for Small Business</title>
+
+  <meta name="description" content="Yellowjacket Consulting provides cyber risk assessments, system hardening, and ongoing protection for small businesses.">
+  <meta name="keywords" content="Cybersecurity, Small Business Security, Risk Assessment, Security Audit, Network Protection">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #0b1c2d;
+      color: white;
+      scroll-behavior: smooth;
+    }
+
+    nav {
+      position: fixed;
+      width: 100%;
+      background: rgba(11,28,45,0.95);
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 25px;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #f5c542;
+    }
+
+    .hero {
+      height: 100vh;
+      background: linear-gradient(-45deg, #0b1c2d, #132b45, #0f2236, #1c3b5a);
+      background-size: 400% 400%;
+      animation: gradient 12s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    @keyframes gradient {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    h1 {
+      font-size: 4vw;
+      margin-bottom: 20px;
+    }
+
+    .gold { color: #f5c542; }
+
+    .btn {
+      background: #f5c542;
+      color: #0b1c2d;
+      padding: 14px 28px;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    .section {
+      padding: 80px 5%;
+      text-align: center;
+    }
+
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .card {
+      background: #132b45;
+      padding: 30px;
+      width: 280px;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card h3 { color: #f5c542; }
+
+    form {
+      max-width: 500px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    input, textarea, select {
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 14px;
+      background: #f5c542;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    footer {
+      padding: 40px 20px;
+      text-align: center;
+      background: #091521;
+      color: #aaa;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        height: 80vh;
+      }
+
+      h1 {
+        font-size: 6vw;
+      }
+
+      nav {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      nav a {
+        margin: 10px 0;
+      }
+
+      .services {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div><span class="gold">Yellowjacket</span> Consulting</div>
+    <div>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <h1>Cyber Risk & <span class="gold">Breach Prevention</span></h1>
+      <p>Enterprise-grade security strategy for small businesses.</p>
+      <a href="#contact" class="btn">Request Assessment</a>
+    </div>
+  </section>
+
+  <section id="services" class="section">
+    <h2>Our Services</h2>
+    <div class="services">
+      <div class="card">
+        <h3>Security Audits</h3>
+        <p>Full vulnerability assessments and structured risk analysis.</p>
+      </div>
+      <div class="card">
+        <h3>System Hardening</h3>
+        <p>Firewall, endpoint, and access control configuration.</p>
+      </div>
+      <div class="card">
+        <h3>Ongoing Protection</h3>
+        <p>Continuous monitoring and advisory strategy.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <h2>Why Yellowjacket?</h2>
+    <p>
+      Small businesses face enterprise-level threats without enterprise-level security teams.
+      We close gaps, reduce risk exposure, and build hardened infrastructure that protects revenue and reputation.
+    </p>
+  </section>
+
+  <section id="contact" class="section">
+    <h2>Request a Consultation</h2>
+    <form action="https://formspree.io/f/mqeddebj" method="POST">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="company">Company Name</label>
+      <input type="text" id="company" name="company">
+
+      <label for="service">Service Needed</label>
+      <select id="service" name="service">
+        <option value="security-audit">Security Audit</option>
+        <option value="penetration-testing">Penetration Testing</option>
+        <option value="consulting">Cybersecurity Consulting</option>
+        <option value="incident-response">Incident Response</option>
+      </select>
+
+      <label for="message">Describe Your Security Concern</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <button type="submit">Request Consultation</button>
+    </form>
+
+    <br><br>
+    <!-- Calendly Embed -->
+    <iframe src="https://calendly.com/yourlink" width="100%" height="600" frameborder="0"></iframe>
+  </section>
+
+  <footer>
+    © 2026 Yellowjacket Consulting | Cybersecurity Advisory
+  </footer>
+
+</body>
+</html>
