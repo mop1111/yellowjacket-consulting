@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yellowjacket Consulting | Cybersecurity</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ================= ROOT VARIABLES ================= */
+:root {
+  --yellow: #FFC72C;
+  --bg-primary: #0F1115;
+  --bg-secondary: #1A1D24;
+  --text-primary: #FFFFFF;
+  --text-muted: #BFC5CE;
+}
+
+/* LIGHT MODE */
+body.light {
+  --bg-primary: #F4F6F9;
+  --bg-secondary: #FFFFFF;
+  --text-primary: #111111;
+  --text-muted: #555;
+}
+
+/* ================= BASE RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
+  position: relative;
+}
+
+/* ================= SMOOTH GRID BACKGROUND ================= */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,199,44,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,199,44,0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridMove 80s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes gridMove {
+  from { background-position: 0 0; }
+  to { background-position: 50px 50px; }
+}
+
+/* ================= HONEYCOMB ================= */
+.honeycomb {
+  position: fixed;
+  inset: 0;
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.honeycomb svg {
+  width: 100%;
+  height: 100%;
+  transform: translateZ(0);
+}
+
+/* ================= LAYERING ================= */
+header, section, footer {
+  position: relative;
+  z-index: 2;
+}
+
+/* ================= HEADER ================= */
+header {
+  background: var(--bg-secondary);
+  padding: 18px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+body.light header {
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo img {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.logo span {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+  margin-left: 28px;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+nav a:hover {
+  color: var(--yellow);
+}
+
+/* ================= THEME TOGGLE ================= */
+.theme-toggle {
+  margin-left: 28px;
+  background: var(--yellow);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #000;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(255,199,44,0.6);
+}
+
+.theme-toggle:active {
+  transform: scale(0.96);
+}
+
+/* ================= HERO ================= */
+.hero {
+  text-align: center;
+  padding: 150px 8% 120px;
+  position: relative;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 20px;
+}
+
+.hero p {
+  max-width: 700px;
+  margin: auto;
+  color: var(--text-muted);
+}
+
+/* ================= SHIELD ================= */
+.shield-bg {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 380px;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.shield-bg path {
+  stroke: var(--yellow);
+  stroke-width: 2;
+  fill: none;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation:
+    drawShield 6s ease forwards,
+    pulseGlow 3s ease-in-out infinite alternate 6s;
+}
+
+@keyframes drawShield {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes pulseGlow {
+  from { filter: drop-shadow(0 0 4px rgba(255,199,44,0.4)); }
+  to { filter: drop-shadow(0 0 14px rgba(255,199,44,0.9)); }
+}
+
+/* ================= BUTTON ================= */
+.btn {
+  display: inline-block;
+  margin-top: 32px;
+  padding: 16px 36px;
+  background: var(--yellow);
+  color: #000;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(255,199,44,0.6);
+}
+
+/* ================= PRICING ================= */
+.section {
+  padding: 100px 8%;
+  text-align: center;
+}
+
+.pricing-grid {
+  display: grid;
+  gap: 30px;
+  margin-top: 50px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.card {
+  background: var(--bg-secondary);
+  padding: 40px 30px;
+  border-radius: 14px;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.price {
+  font-size: 2rem;
+  margin: 20px 0;
+  color: var(--yellow);
+}
+
+footer {
+  padding: 40px 8%;
+  background: var(--bg-secondary);
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+  nav a { display:none; }
+  .shield-bg { width: 250px; }
+  header { padding: 16px 6%; }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Honeycomb -->
+<div class="honeycomb">
+<svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+<defs>
+<pattern id="hex" width="70" height="60" patternUnits="userSpaceOnUse">
+<polygon points="35,2 68,17 68,43 35,58 2,43 2,17"
+fill="none" stroke="#FFC72C" stroke-width="1"/>
+</pattern>
+</defs>
+<rect width="100%" height="100%" fill="url(#hex)" />
+</svg>
+</div>
+
+<header>
+  <div class="logo">
+    <img src="logo.png" alt="Yellowjacket Consulting Logo">
+    <span>Yellowjacket Consulting</span>
+  </div>
+
+  <nav>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact">Contact</a>
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="shield-bg">
+    <svg viewBox="0 0 100 120">
+      <path d="M50 5 L90 25 V60 C90 85 70 105 50 115 C30 105 10 85 10 60 V25 Z"/>
+    </svg>
+  </div>
+
+  <h1>Cybersecurity Built for Small Business</h1>
+  <p>We secure growing companies with practical, scalable protection strategies.</p>
+  <a href="#pricing" class="btn">View Plans</a>
+</section>
+
+<section id="pricing" class="section">
+  <h2>Consulting Plans</h2>
+  <div class="pricing-grid">
+    <div class="card">
+      <h3>Starter Shield</h3>
+      <div class="price">$1,500</div>
+      <p>Security audit<br>Vulnerability scan<br>Risk report</p>
+    </div>
+
+    <div class="card">
+      <h3>Growth Defense</h3>
+      <div class="price">$3,500</div>
+      <p>Policy setup<br>Compliance review<br>Incident planning</p>
+    </div>
+
+    <div class="card">
+      <h3>Elite Protection</h3>
+      <div class="price">$6,000+</div>
+      <p>Infrastructure review<br>Ongoing advisory<br>Quarterly testing</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <h2>Let’s Secure Your Business</h2>
+  <p>Email: markyellowjacket@yahoo.com</p>
+</section>
+
+<footer>
+  © 2026 Yellowjacket Consulting. All rights reserved.
+</footer>
+
+<script>
+(function(){
+  const saved = localStorage.getItem("theme");
+  if(saved === "light") {
+    document.body.classList.add("light");
+    document.getElementById("themeBtn").textContent = "☀️";
+  }
+})();
+
+function toggleTheme() {
+  document.body.classList.toggle("light");
+  const isLight = document.body.classList.contains("light");
+  localStorage.setItem("theme", isLight ? "light" : "dark");
+  document.getElementById("themeBtn").textContent = isLight ? "☀️" : "🌙";
+}
+</script>
+
+</body>
+</html>
