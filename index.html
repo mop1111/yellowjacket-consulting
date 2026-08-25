@@ -676,44 +676,66 @@
 
     .testimonials {
       display: grid;
-
       grid-template-columns: repeat(3, 1fr);
-
-      gap: 14px;
+      gap: 16px;
     }
 
     .testimonial {
-      padding: 23px;
-
+      position: relative;
+      padding: 26px;
       border: 1px solid var(--border);
-
       border-radius: 18px;
+      background: linear-gradient(180deg, #171717, #0d0d0d);
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
 
-      background: var(--card);
+    .testimonial:hover {
+      transform: translateY(-4px);
+      border-color: var(--yellow-dark);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
     }
 
     .stars {
+      margin-bottom: 14px;
       color: var(--yellow);
-
-      letter-spacing: 2px;
+      font-size: 16px;
+      letter-spacing: 3px;
     }
 
     .testimonial p {
+      margin-bottom: 20px;
       color: var(--gray-light);
+      font-size: 15px;
+      line-height: 1.7;
     }
 
     .student {
-      color: var(--gray);
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      flex-wrap: wrap;
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 800;
+    }
 
-      font-size: 12px;
+    .sample-label {
+      display: inline-flex;
+      padding: 3px 7px;
+      border: 1px solid rgba(245, 197, 24, 0.35);
+      border-radius: 999px;
+      background: rgba(245, 197, 24, 0.08);
+      color: var(--yellow);
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
     }
 
     .placeholder-note {
-      margin-top: 12px;
-
-      color: #737373;
-
-      font-size: 12px;
+      margin-top: 15px;
+      color: #6f7682;
+      font-size: 11px;
     }
 
     /* =========================
@@ -1143,6 +1165,7 @@
             type="button"
             aria-label="Open navigation"
             aria-expanded="false"
+            aria-controls="mobileMenu"
           >
             ☰
           </button>
@@ -1652,87 +1675,53 @@
 
     <!-- REVIEWS -->
 
-    <section
-      id="reviews"
-      class="container"
-    >
-
+    <section id="reviews" class="container">
       <div class="section-head">
-
-        <span class="eyebrow">
-          Student Feedback
-        </span>
-
-        <h2>
-          Built to become a course people recommend.
-        </h2>
-
+        <span class="eyebrow">Student Feedback</span>
+        <h2>What students are saying.</h2>
         <p class="section-description">
-          
+          See how YellowJacket Crypto helps students understand crypto concepts with more clarity and confidence.
         </p>
-
       </div>
 
       <div class="testimonials">
+        <div class="testimonial">
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p>
+            “The wallet and security lessons finally made crypto make sense. Everything was explained in a way that was easy to follow.”
+          </p>
+          <div class="student">
+            Marcus T.
+            <span class="sample-label">Sample Student</span>
+          </div>
+        </div>
 
-  <div class="testimonial">
+        <div class="testimonial">
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p>
+            “I finally understood gas, networks and transactions without getting completely lost in technical terminology.”
+          </p>
+          <div class="student">
+            Jordan R.
+            <span class="sample-label">Sample Student</span>
+          </div>
+        </div>
 
-    <div class="stars">
-      ★★★★★
-    </div>
-
-    <p>
-      “The wallet and security lessons
-      finally made crypto make sense.”
-    </p>
-
-    <div class="student">
-      Marcus T. — Student
-    </div>
-
-  </div>
-
-
-  <div class="testimonial">
-
-    <div class="stars">
-      ★★★★★
-    </div>
-
-    <p>
-      “I finally understood gas,
-      networks and transactions
-      without getting lost.”
-    </p>
-
-    <div class="student">
-      Jordan R. — Student
-    </div>
-
-  </div>
-
-
-  <div class="testimonial">
-
-    <div class="stars">
-      ★★★★★
-    </div>
-
-    <p>
-      “The risk section gave me
-      a much more disciplined way
-      to think about crypto.”
-    </p>
-
-    <div class="student">
-      Alex M. —  Student
-    </div>
-
-  </div>
-
-</div>
+        <div class="testimonial">
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p>
+            “The risk management section gave me a much more disciplined way to think about crypto instead of just chasing hype.”
+          </p>
+          <div class="student">
+            Alex M.
+            <span class="sample-label">Sample Student</span>
+          </div>
+        </div>
       </div>
 
+      <p class="placeholder-note">
+        Sample testimonials shown for website preview purposes. Replace them with verified student feedback after launch.
+      </p>
     </section>
 
 
@@ -2196,21 +2185,26 @@
 
                 event.preventDefault();
 
+                let checkoutUrl;
+
+                try {
+                  checkoutUrl = new URL(WHOP_CHECKOUT_URL);
+                } catch (error) {
+                  checkoutUrl = null;
+                }
+
                 if (
-                  !WHOP_CHECKOUT_URL ||
-                  WHOP_CHECKOUT_URL ===
-                    "YOUR_WHOP_CHECKOUT_LINK"
+                  !checkoutUrl ||
+                  !["http:", "https:"].includes(checkoutUrl.protocol) ||
+                  WHOP_CHECKOUT_URL === "YOUR_WHOP_CHECKOUT_LINK"
                 ) {
-
                   showToast(
-                    "Add your Whop checkout link in the JavaScript first."
+                    "Add a valid Whop checkout URL in the JavaScript first."
                   );
-
                   return;
                 }
 
-                window.location.href =
-                  WHOP_CHECKOUT_URL;
+                window.location.assign(checkoutUrl.href);
 
               }
             );
@@ -2334,6 +2328,13 @@
           menuButton.textContent =
             "☰";
 
+          menuButton.setAttribute(
+            "aria-label",
+            "Open navigation"
+          );
+
+          document.body.classList.remove("menu-open");
+
         }
 
         if (
@@ -2359,6 +2360,13 @@
                 isOpen
                   ? "✕"
                   : "☰";
+
+              menuButton.setAttribute(
+                "aria-label",
+                isOpen ? "Close navigation" : "Open navigation"
+              );
+
+              document.body.classList.toggle("menu-open", isOpen);
 
             }
           );
@@ -2448,6 +2456,15 @@
 
             }
 
+          }
+        );
+
+        window.addEventListener(
+          "resize",
+          function () {
+            if (window.innerWidth > 850) {
+              closeMobileMenu();
+            }
           }
         );
 
