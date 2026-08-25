@@ -1,101 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
 
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0"
-  >
+  />
 
   <meta
     name="description"
     content="YellowJacket Crypto — practical crypto education for beginners."
-  >
+  />
 
   <meta
     name="theme-color"
     content="#050505"
-  >
+  />
 
-  <title>
-    YellowJacket Crypto | Learn Crypto With Clarity
-  </title>
+  <title>YellowJacket Crypto | Learn Crypto With Clarity</title>
 
   <style>
-
-    /* =====================================================
-       RESET
-    ===================================================== */
-
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-
-      background:
-        radial-gradient(
-          circle at 85% 0%,
-          rgba(245, 197, 24, 0.14),
-          transparent 30%
-        ),
-        #050505;
-
-      color: #f7f7f7;
-
-      font-family:
-        Inter,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-
-      line-height: 1.6;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    button,
-    input {
-      font: inherit;
-    }
-
-    button {
-      cursor: pointer;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    :focus-visible {
-      outline: 3px solid #f5c518;
-      outline-offset: 3px;
-    }
-
-
-    /* =====================================================
-       VARIABLES
-    ===================================================== */
-
     :root {
       --yellow: #f5c518;
       --yellow-light: #ffd83d;
-      --yellow-dark: #c89e00;
+      --yellow-dark: #c99d00;
 
       --black: #050505;
       --black-2: #090909;
@@ -113,10 +42,61 @@
         0 25px 70px rgba(0, 0, 0, 0.45);
     }
 
+    * {
+      box-sizing: border-box;
+    }
 
-    /* =====================================================
-       GLOBAL
-    ===================================================== */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+
+      background:
+        radial-gradient(
+          circle at 85% 0%,
+          rgba(245, 197, 24, 0.14),
+          transparent 30%
+        ),
+        var(--black);
+
+      color: var(--white);
+
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      line-height: 1.6;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--yellow);
+      outline-offset: 3px;
+    }
 
     .container {
       width: min(1140px, 92%);
@@ -125,6 +105,7 @@
 
     section {
       padding: 80px 0;
+      scroll-margin-top: 90px;
     }
 
     .eyebrow {
@@ -152,8 +133,7 @@
     h2 {
       margin-bottom: 12px;
 
-      font-size:
-        clamp(32px, 5vw, 44px);
+      font-size: clamp(32px, 5vw, 44px);
 
       line-height: 1.08;
 
@@ -168,10 +148,13 @@
       font-size: 16px;
     }
 
+    .section-head {
+      margin-bottom: 32px;
+    }
 
-    /* =====================================================
+    /* =========================
        HEADER
-    ===================================================== */
+    ========================= */
 
     header {
       position: sticky;
@@ -179,14 +162,12 @@
 
       z-index: 1000;
 
-      border-bottom:
-        1px solid var(--border);
+      border-bottom: 1px solid var(--border);
 
       background:
-        rgba(5, 5, 5, 0.88);
+        rgba(5, 5, 5, 0.9);
 
-      backdrop-filter:
-        blur(18px);
+      backdrop-filter: blur(18px);
     }
 
     .nav {
@@ -217,12 +198,12 @@
 
     .logo-bee {
       margin-right: 7px;
-
-      color: var(--yellow);
     }
 
     .logo-yellow {
       color: var(--yellow);
+
+      margin-left: 4px;
     }
 
     .nav-links {
@@ -238,8 +219,7 @@
     }
 
     .nav-links a {
-      transition:
-        color 0.2s ease;
+      transition: color 0.2s ease;
     }
 
     .nav-links a:hover {
@@ -254,10 +234,49 @@
       gap: 8px;
     }
 
+    .menu-button {
+      display: none;
 
-    /* =====================================================
+      width: 44px;
+      height: 44px;
+
+      align-items: center;
+      justify-content: center;
+
+      border: 1px solid var(--border);
+
+      border-radius: 10px;
+
+      background: var(--card);
+
+      color: var(--white);
+
+      font-size: 20px;
+    }
+
+    .mobile-menu {
+      display: none;
+
+      padding: 0 0 18px;
+    }
+
+    .mobile-menu.open {
+      display: grid;
+
+      gap: 8px;
+    }
+
+    .mobile-menu a {
+      padding: 12px 0;
+
+      border-bottom: 1px solid #17130a;
+
+      color: var(--gray);
+    }
+
+    /* =========================
        BUTTONS
-    ===================================================== */
+    ========================= */
 
     .btn {
       min-height: 44px;
@@ -268,19 +287,15 @@
 
       justify-content: center;
 
-      padding:
-        11px 17px;
+      padding: 11px 17px;
 
-      border:
-        1px solid var(--border);
+      border: 1px solid var(--border);
 
       border-radius: 11px;
 
-      background:
-        var(--card);
+      background: var(--card);
 
-      color:
-        var(--white);
+      color: var(--white);
 
       font-weight: 800;
 
@@ -291,16 +306,13 @@
     }
 
     .btn:hover {
-      transform:
-        translateY(-2px);
+      transform: translateY(-2px);
 
-      border-color:
-        var(--yellow);
+      border-color: var(--yellow);
     }
 
     .btn-primary {
-      border-color:
-        transparent;
+      border-color: transparent;
 
       background:
         linear-gradient(
@@ -309,83 +321,62 @@
           var(--yellow-dark)
         );
 
-      color:
-        #050505;
+      color: #050505;
 
       box-shadow:
-        0 10px 28px
-        rgba(245, 197, 24, 0.18);
+        0 10px 28px rgba(245, 197, 24, 0.18);
     }
 
     .btn-primary:hover {
-      border-color:
-        transparent;
+      border-color: transparent;
 
       box-shadow:
-        0 15px 40px
-        rgba(245, 197, 24, 0.32);
+        0 15px 40px rgba(245, 197, 24, 0.32);
     }
 
-
-    /* =====================================================
+    /* =========================
        HERO
-    ===================================================== */
+    ========================= */
 
     .hero {
-      padding:
-        105px 0 65px;
+      padding: 105px 0 65px;
 
-      text-align:
-        center;
+      text-align: center;
     }
 
     .badge {
-      display:
-        inline-flex;
+      display: inline-flex;
 
-      align-items:
-        center;
+      align-items: center;
 
-      padding:
-        7px 13px;
+      padding: 7px 13px;
 
-      border:
-        1px solid #5a4b08;
+      border: 1px solid #5a4b08;
 
-      border-radius:
-        999px;
+      border-radius: 999px;
 
       background:
         rgba(245, 197, 24, 0.08);
 
-      color:
-        var(--yellow-light);
+      color: var(--yellow-light);
 
-      font-size:
-        11px;
+      font-size: 11px;
 
-      font-weight:
-        900;
+      font-weight: 900;
 
-      letter-spacing:
-        0.9px;
+      letter-spacing: 0.9px;
     }
 
     .hero h1 {
-      max-width:
-        950px;
+      max-width: 950px;
 
-      margin:
-        22px auto;
+      margin: 22px auto;
 
-      font-size:
-        clamp(45px, 7.5vw, 82px);
+      font-size: clamp(45px, 7.5vw, 82px);
 
-      line-height:
-        0.98;
+      line-height: 0.98;
 
-      letter-spacing:
-        -4px;
+      letter-spacing: -4px;
     }
 
     .yellow-text {
@@ -397,109 +388,78 @@
           var(--yellow)
         );
 
-      -webkit-background-clip:
-        text;
+      -webkit-background-clip: text;
+      background-clip: text;
 
-      background-clip:
-        text;
-
-      color:
-        transparent;
+      color: transparent;
     }
 
     .hero-description {
-      max-width:
-        700px;
+      max-width: 700px;
 
-      margin:
-        0 auto 30px;
+      margin: 0 auto 30px;
 
-      color:
-        var(--gray);
+      color: var(--gray);
 
-      font-size:
-        18px;
+      font-size: 18px;
     }
 
     .hero-actions {
-      display:
-        flex;
+      display: flex;
 
-      justify-content:
-        center;
+      justify-content: center;
 
-      align-items:
-        center;
+      align-items: center;
 
-      gap:
-        10px;
+      gap: 10px;
 
-      flex-wrap:
-        wrap;
+      flex-wrap: wrap;
     }
 
     .trust {
-      display:
-        flex;
+      display: flex;
 
-      justify-content:
-        center;
+      justify-content: center;
 
-      align-items:
-        center;
+      align-items: center;
 
-      flex-wrap:
-        wrap;
+      flex-wrap: wrap;
 
-      gap:
-        22px;
+      gap: 22px;
 
-      margin-top:
-        25px;
+      margin-top: 25px;
 
-      color:
-        #777f8d;
+      color: #777f8d;
 
-      font-size:
-        12px;
+      font-size: 12px;
     }
 
     .trust strong {
-      color:
-        var(--yellow);
+      color: var(--yellow);
     }
 
-
-    /* =====================================================
+    /* =========================
        STATS
-    ===================================================== */
+    ========================= */
 
     .stats {
-      display:
-        grid;
+      display: grid;
 
-      grid-template-columns:
-        repeat(3, 1fr);
+      grid-template-columns: repeat(3, 1fr);
 
-      gap:
-        14px;
+      gap: 14px;
 
-      margin-bottom:
-        60px;
+      margin-bottom: 60px;
     }
 
     .stat {
-      padding:
-        24px;
+      padding: 24px;
 
-      text-align:
-        center;
+      text-align: center;
 
-      border:
-        1px solid var(--border);
+      border: 1px solid var(--border);
 
-      border-radius:
-        18px;
+      border-radius: 18px;
 
       background:
         linear-gradient(
@@ -510,57 +470,39 @@
     }
 
     .stat strong {
-      display:
-        block;
+      display: block;
 
-      margin-bottom:
-        2px;
+      margin-bottom: 2px;
 
-      color:
-        var(--yellow);
+      color: var(--yellow);
 
-      font-size:
-        29px;
+      font-size: 29px;
     }
 
     .stat span {
-      color:
-        var(--gray);
+      color: var(--gray);
 
-      font-size:
-        12px;
+      font-size: 12px;
     }
 
-
-    /* =====================================================
-       FEATURE CARDS
-    ===================================================== */
-
-    .section-head {
-      margin-bottom:
-        32px;
-    }
+    /* =========================
+       FEATURES
+    ========================= */
 
     .features {
-      display:
-        grid;
+      display: grid;
 
-      grid-template-columns:
-        repeat(3, 1fr);
+      grid-template-columns: repeat(3, 1fr);
 
-      gap:
-        15px;
+      gap: 15px;
     }
 
     .card {
-      padding:
-        25px;
+      padding: 25px;
 
-      border:
-        1px solid var(--border);
+      border: 1px solid var(--border);
 
-      border-radius:
-        18px;
+      border-radius: 18px;
 
       background:
         linear-gradient(
@@ -569,71 +511,54 @@
           var(--card)
         );
 
-      box-shadow:
-        var(--shadow);
+      box-shadow: var(--shadow);
     }
 
     .card-icon {
-      margin-bottom:
-        10px;
+      margin-bottom: 10px;
 
-      font-size:
-        28px;
+      font-size: 28px;
     }
 
     .card h3 {
-      margin-bottom:
-        7px;
+      margin-bottom: 7px;
 
-      font-size:
-        18px;
+      font-size: 18px;
     }
 
     .card p {
-      margin:
-        0;
+      margin: 0;
 
-      color:
-        var(--gray);
+      color: var(--gray);
 
-      font-size:
-        14px;
+      font-size: 14px;
     }
 
-
-    /* =====================================================
+    /* =========================
        CURRICULUM
-    ===================================================== */
+    ========================= */
 
     .curriculum {
-      display:
-        grid;
+      display: grid;
 
-      gap:
-        10px;
+      gap: 10px;
     }
 
     .lesson {
-      display:
-        grid;
+      display: grid;
 
       grid-template-columns:
         45px minmax(0, 1fr) auto;
 
-      align-items:
-        center;
+      align-items: center;
 
-      gap:
-        15px;
+      gap: 15px;
 
-      padding:
-        18px;
+      padding: 18px;
 
-      border:
-        1px solid var(--border);
+      border: 1px solid var(--border);
 
-      border-radius:
-        17px;
+      border-radius: 17px;
 
       background:
         linear-gradient(
@@ -648,94 +573,70 @@
     }
 
     .lesson:hover {
-      transform:
-        translateX(3px);
+      transform: translateX(3px);
 
-      border-color:
-        var(--yellow-dark);
+      border-color: var(--yellow-dark);
     }
 
     .lesson-number {
-      width:
-        40px;
+      width: 40px;
+      height: 40px;
 
-      height:
-        40px;
+      display: grid;
 
-      display:
-        grid;
+      place-items: center;
 
-      place-items:
-        center;
-
-      border-radius:
-        12px;
+      border-radius: 12px;
 
       background:
         rgba(245, 197, 24, 0.1);
 
-      color:
-        var(--yellow);
+      color: var(--yellow);
 
-      font-weight:
-        900;
+      font-weight: 900;
     }
 
     .lesson h3 {
-      margin:
-        0 0 3px;
+      margin: 0 0 3px;
 
-      font-size:
-        16px;
+      font-size: 16px;
     }
 
     .lesson p {
-      margin:
-        0;
+      margin: 0;
 
-      color:
-        var(--gray);
+      color: var(--gray);
 
-      font-size:
-        13px;
+      font-size: 13px;
     }
 
     .lesson-count {
-      color:
-        #7d8595;
+      color: #7d8595;
 
-      font-size:
-        11px;
+      font-size: 11px;
 
-      white-space:
-        nowrap;
+      white-space: nowrap;
     }
 
-
-    /* =====================================================
-       VALUE SECTION
-    ===================================================== */
+    /* =========================
+       VALUE
+    ========================= */
 
     .value-grid {
-      display:
-        grid;
+      display: grid;
 
       grid-template-columns:
         1.1fr 0.9fr;
 
-      gap:
-        18px;
+      gap: 18px;
     }
 
     .value-panel {
-      padding:
-        32px;
+      padding: 32px;
 
-      border:
-        1px solid var(--border);
+      border: 1px solid var(--border);
 
-      border-radius:
-        22px;
+      border-radius: 22px;
 
       background:
         linear-gradient(
@@ -746,66 +647,95 @@
     }
 
     .checks {
-      display:
-        grid;
+      display: grid;
 
-      gap:
-        14px;
+      gap: 14px;
 
-      margin-top:
-        22px;
+      margin-top: 22px;
     }
 
     .check {
-      display:
-        flex;
+      display: flex;
 
-      gap:
-        10px;
+      gap: 10px;
 
-      color:
-        var(--gray-light);
+      color: var(--gray-light);
     }
 
     .check-icon {
-      flex:
-        0 0 auto;
+      flex: 0 0 auto;
 
-      color:
-        var(--yellow);
+      color: var(--yellow);
 
-      font-weight:
-        900;
+      font-weight: 900;
     }
 
+    /* =========================
+       TESTIMONIALS
+    ========================= */
 
-    /* =====================================================
+    .testimonials {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 14px;
+    }
+
+    .testimonial {
+      padding: 23px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 18px;
+
+      background: var(--card);
+    }
+
+    .stars {
+      color: var(--yellow);
+
+      letter-spacing: 2px;
+    }
+
+    .testimonial p {
+      color: var(--gray-light);
+    }
+
+    .student {
+      color: var(--gray);
+
+      font-size: 12px;
+    }
+
+    .placeholder-note {
+      margin-top: 12px;
+
+      color: #737373;
+
+      font-size: 12px;
+    }
+
+    /* =========================
        PRICING
-    ===================================================== */
+    ========================= */
 
     .pricing {
-      display:
-        grid;
+      display: grid;
 
-      grid-template-columns:
-        repeat(2, 1fr);
+      grid-template-columns: repeat(2, 1fr);
 
-      gap:
-        16px;
+      gap: 16px;
     }
 
     .price-card {
-      position:
-        relative;
+      position: relative;
 
-      padding:
-        30px;
+      padding: 30px;
 
-      border:
-        1px solid var(--border);
+      border: 1px solid var(--border);
 
-      border-radius:
-        20px;
+      border-radius: 20px;
 
       background:
         linear-gradient(
@@ -816,297 +746,182 @@
     }
 
     .price-card.featured {
-      border-color:
-        var(--yellow-dark);
+      border-color: var(--yellow-dark);
 
       box-shadow:
-        0 0 55px
-        rgba(245, 197, 24, 0.08);
+        0 0 55px rgba(245, 197, 24, 0.08);
     }
 
     .popular {
-      position:
-        absolute;
+      position: absolute;
 
-      top:
-        18px;
+      top: 18px;
 
-      right:
-        18px;
+      right: 18px;
 
-      padding:
-        5px 9px;
+      padding: 5px 9px;
 
-      border-radius:
-        999px;
+      border-radius: 999px;
 
-      background:
-        var(--yellow);
+      background: var(--yellow);
 
-      color:
-        #050505;
+      color: #050505;
 
-      font-size:
-        10px;
+      font-size: 10px;
 
-      font-weight:
-        900;
+      font-weight: 900;
     }
 
     .price-card h3 {
-      margin-bottom:
-        10px;
+      margin-bottom: 10px;
 
-      font-size:
-        21px;
+      font-size: 21px;
     }
 
     .price {
-      margin-bottom:
-        15px;
+      margin-bottom: 15px;
 
-      color:
-        var(--yellow);
+      color: var(--yellow);
 
-      font-size:
-        46px;
+      font-size: 46px;
 
-      font-weight:
-        950;
+      font-weight: 950;
 
-      letter-spacing:
-        -2px;
+      letter-spacing: -2px;
     }
 
     .price small {
-      color:
-        var(--gray);
+      color: var(--gray);
 
-      font-size:
-        12px;
+      font-size: 12px;
 
-      font-weight:
-        500;
+      font-weight: 500;
 
-      letter-spacing:
-        0;
+      letter-spacing: 0;
     }
 
     .price-list {
-      padding:
-        0;
+      padding: 0;
 
-      margin:
-        0 0 24px;
+      margin: 0 0 24px;
 
-      list-style:
-        none;
+      list-style: none;
     }
 
     .price-list li {
-      margin:
-        12px 0;
+      margin: 12px 0;
 
-      color:
-        var(--gray-light);
+      color: var(--gray-light);
     }
 
     .price-list li::before {
-      content:
-        "✓";
+      content: "✓";
 
-      margin-right:
-        9px;
+      margin-right: 9px;
 
-      color:
-        var(--yellow);
+      color: var(--yellow);
 
-      font-weight:
-        900;
+      font-weight: 900;
+    }
+
+    .price-card .btn {
+      width: 100%;
     }
 
     .pricing-note {
-      margin-top:
-        18px;
+      margin-top: 18px;
 
-      color:
-        #777f8d;
+      color: #777f8d;
 
-      font-size:
-        12px;
+      font-size: 12px;
     }
 
-
-    /* =====================================================
-       TESTIMONIALS
-    ===================================================== */
-
-    .testimonials {
-      display:
-        grid;
-
-      grid-template-columns:
-        repeat(3, 1fr);
-
-      gap:
-        14px;
-    }
-
-    .testimonial {
-      padding:
-        23px;
-
-      border:
-        1px solid var(--border);
-
-      border-radius:
-        18px;
-
-      background:
-        var(--card);
-    }
-
-    .stars {
-      color:
-        var(--yellow);
-
-      letter-spacing:
-        2px;
-    }
-
-    .testimonial p {
-      color:
-        var(--gray-light);
-    }
-
-    .student {
-      color:
-        var(--gray);
-
-      font-size:
-        12px;
-    }
-
-
-    /* =====================================================
+    /* =========================
        FAQ
-    ===================================================== */
+    ========================= */
 
     .faq {
-      display:
-        grid;
+      display: grid;
 
-      gap:
-        9px;
+      gap: 9px;
     }
 
     .faq-item {
-      overflow:
-        hidden;
+      overflow: hidden;
 
-      border:
-        1px solid var(--border);
+      border: 1px solid var(--border);
 
-      border-radius:
-        14px;
+      border-radius: 14px;
 
-      background:
-        var(--card);
+      background: var(--card);
     }
 
     .faq-question {
-      width:
-        100%;
+      width: 100%;
 
-      min-height:
-        58px;
+      min-height: 58px;
 
-      display:
-        flex;
+      display: flex;
 
-      align-items:
-        center;
+      align-items: center;
 
-      justify-content:
-        space-between;
+      justify-content: space-between;
 
-      gap:
-        15px;
+      gap: 15px;
 
-      padding:
-        17px 19px;
+      padding: 17px 19px;
 
-      border:
-        0;
+      border: 0;
 
-      background:
-        transparent;
+      background: transparent;
 
-      color:
-        var(--white);
+      color: var(--white);
 
-      text-align:
-        left;
+      text-align: left;
 
-      font-weight:
-        800;
+      font-weight: 800;
     }
 
     .faq-icon {
-      flex:
-        0 0 auto;
+      flex: 0 0 auto;
 
-      color:
-        var(--yellow);
+      color: var(--yellow);
 
-      font-size:
-        20px;
+      font-size: 20px;
 
-      transition:
-        transform 0.2s ease;
+      transition: transform 0.2s ease;
     }
 
     .faq-answer {
-      display:
-        none;
+      display: none;
 
-      padding:
-        0 19px 19px;
+      padding: 0 19px 19px;
 
-      color:
-        var(--gray);
+      color: var(--gray);
 
-      font-size:
-        14px;
+      font-size: 14px;
     }
 
     .faq-item.open .faq-answer {
-      display:
-        block;
+      display: block;
     }
 
     .faq-item.open .faq-icon {
-      transform:
-        rotate(45deg);
+      transform: rotate(45deg);
     }
 
-
-    /* =====================================================
+    /* =========================
        CTA
-    ===================================================== */
+    ========================= */
 
     .cta {
-      padding:
-        60px 30px;
+      padding: 60px 30px;
 
-      text-align:
-        center;
+      text-align: center;
 
-      border:
-        1px solid var(--border);
+      border: 1px solid var(--border);
 
-      border-radius:
-        25px;
+      border-radius: 25px;
 
       background:
         radial-gradient(
@@ -1117,296 +932,131 @@
     }
 
     .cta p {
-      margin:
-        0 auto 25px;
+      margin: 0 auto 25px;
 
-      color:
-        var(--gray);
+      color: var(--gray);
     }
 
-
-    /* =====================================================
+    /* =========================
        FOOTER
-    ===================================================== */
+    ========================= */
 
     footer {
-      margin-top:
-        30px;
+      margin-top: 30px;
 
-      padding:
-        35px 0;
+      padding: 35px 0;
 
-      border-top:
-        1px solid var(--border);
+      border-top: 1px solid var(--border);
 
-      color:
-        var(--gray);
+      color: var(--gray);
 
-      font-size:
-        12px;
+      font-size: 12px;
     }
 
     .footer-row {
-      display:
-        flex;
+      display: flex;
 
-      align-items:
-        flex-start;
+      align-items: flex-start;
 
-      justify-content:
-        space-between;
+      justify-content: space-between;
 
-      gap:
-        20px;
+      gap: 20px;
 
-      flex-wrap:
-        wrap;
+      flex-wrap: wrap;
     }
 
     .footer-brand {
-      color:
-        var(--white);
+      color: var(--white);
 
-      font-weight:
-        900;
+      font-weight: 900;
     }
 
-
-    /* =====================================================
-       MODAL
-    ===================================================== */
-
-    .modal {
-      position:
-        fixed;
-
-      inset:
-        0;
-
-      z-index:
-        2000;
-
-      display:
-        none;
-
-      align-items:
-        center;
-
-      justify-content:
-        center;
-
-      padding:
-        20px;
-
-      background:
-        rgba(0, 0, 0, 0.82);
-    }
-
-    .modal.active {
-      display:
-        flex;
-    }
-
-    .modal-content {
-      width:
-        min(500px, 100%);
-
-      padding:
-        30px;
-
-      border:
-        1px solid var(--border);
-
-      border-radius:
-        20px;
-
-      background:
-        #111111;
-
-      box-shadow:
-        var(--shadow);
-    }
-
-    .modal-close {
-      float:
-        right;
-
-      width:
-        36px;
-
-      height:
-        36px;
-
-      border:
-        1px solid var(--border);
-
-      border-radius:
-        9px;
-
-      background:
-        #080808;
-
-      color:
-        var(--white);
-    }
-
-    .modal-content input {
-      width:
-        100%;
-
-      min-height:
-        46px;
-
-      margin:
-        10px 0 15px;
-
-      padding:
-        12px;
-
-      border:
-        1px solid var(--border);
-
-      border-radius:
-        10px;
-
-      outline:
-        none;
-
-      background:
-        #050505;
-
-      color:
-        var(--white);
-    }
-
-    .modal-content input:focus {
-      border-color:
-        var(--yellow);
-    }
-
-    .modal-actions {
-      display:
-        flex;
-
-      justify-content:
-        flex-end;
-
-      gap:
-        8px;
-    }
-
-
-    /* =====================================================
+    /* =========================
        TOAST
-    ===================================================== */
+    ========================= */
 
     .toast {
-      position:
-        fixed;
+      position: fixed;
 
-      right:
-        20px;
+      right: 20px;
 
-      bottom:
-        20px;
+      bottom: 20px;
 
-      z-index:
-        3000;
+      z-index: 3000;
 
-      max-width:
-        calc(100vw - 40px);
+      max-width: calc(100vw - 40px);
 
-      padding:
-        13px 16px;
+      padding: 13px 16px;
 
-      border:
-        1px solid var(--border);
+      border: 1px solid var(--border);
 
-      border-radius:
-        11px;
+      border-radius: 11px;
 
-      background:
-        #151515;
+      background: #151515;
 
-      color:
-        var(--white);
+      color: var(--white);
 
-      box-shadow:
-        var(--shadow);
+      box-shadow: var(--shadow);
 
-      opacity:
-        0;
+      opacity: 0;
 
-      transform:
-        translateY(15px);
+      transform: translateY(15px);
 
-      pointer-events:
-        none;
+      pointer-events: none;
 
-      transition:
-        0.25s ease;
+      transition: 0.25s ease;
     }
 
     .toast.show {
-      opacity:
-        1;
+      opacity: 1;
 
-      transform:
-        translateY(0);
+      transform: translateY(0);
     }
 
-
-    /* =====================================================
-       MOBILE
-    ===================================================== */
+    /* =========================
+       RESPONSIVE
+    ========================= */
 
     @media (max-width: 850px) {
-
       .nav-links {
-        display:
-          none;
+        display: none;
+      }
+
+      .menu-button {
+        display: inline-flex;
       }
 
       .features,
       .testimonials,
       .value-grid,
       .pricing {
-        grid-template-columns:
-          1fr;
+        grid-template-columns: 1fr;
       }
 
-      .stats {
-        margin-bottom:
-          35px;
+      .nav-actions .btn-primary {
+        display: none;
       }
     }
 
-
     @media (max-width: 600px) {
-
       section {
-        padding:
-          60px 0;
+        padding: 60px 0;
       }
 
       .hero {
-        padding:
-          75px 0 45px;
+        padding: 75px 0 45px;
       }
 
       .hero h1 {
-        letter-spacing:
-          -2.5px;
+        letter-spacing: -2.5px;
       }
 
       .hero-description {
-        font-size:
-          16px;
+        font-size: 16px;
       }
 
       .stats {
-        grid-template-columns:
-          1fr;
+        grid-template-columns: 1fr;
       }
 
       .lesson {
@@ -1415,176 +1065,1399 @@
       }
 
       .lesson-count {
-        display:
-          none;
+        display: none;
       }
 
       .value-panel,
       .price-card {
-        padding:
-          24px;
+        padding: 24px;
       }
 
-      .modal-content {
-        padding:
-          23px;
-      }
+      .popular {
+        position: static;
 
-      .modal-actions {
-        flex-direction:
-          column-reverse;
-      }
+        display: inline-block;
 
-      .modal-actions .btn {
-        width:
-          100%;
+        margin-bottom: 12px;
       }
     }
 
-
-    /* =====================================================
-       REDUCED MOTION
-    ===================================================== */
-
     @media (prefers-reduced-motion: reduce) {
-
       html {
-        scroll-behavior:
-          auto;
+        scroll-behavior: auto;
       }
 
       *,
       *::before,
       *::after {
-        transition:
-          none !important;
-
-        animation:
-          none !important;
+        animation: none !important;
+        transition: none !important;
       }
     }
-
   </style>
 </head>
 
-
 <body>
 
+  <!-- HEADER -->
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
+  <header>
+    <div class="container">
 
-<header>
-
-  <div class="container">
-
-    <nav class="nav">
-
-      <a
-        class="logo"
-        href="#"
-        aria-label="YellowJacket Crypto home"
-      >
-
-        <span class="logo-bee">
-          🐝
-        </span>
-
-        YellowJacket
-
-        <span class="logo-yellow">
-          Crypto
-        </span>
-
-      </a>
-
-
-      <div class="nav-links">
-
-        <a href="#learn">
-          Learn
-        </a>
-
-        <a href="#curriculum">
-          Curriculum
-        </a>
-
-        <a href="#reviews">
-          Reviews
-        </a>
-
-        <a href="#pricing">
-          Pricing
-        </a>
-
-        <a href="#faq">
-          FAQ
-        </a>
-
-      </div>
-
-
-      <div class="nav-actions">
+      <nav class="nav">
 
         <a
-          class="btn btn-primary"
-          href="#pricing"
+          href="#top"
+          class="logo"
+          aria-label="YellowJacket Crypto home"
         >
-          Start Learning
+          <span class="logo-bee">🐝</span>
+
+          YellowJacket
+
+          <span class="logo-yellow">
+            Crypto
+          </span>
+        </a>
+
+        <div class="nav-links">
+          <a href="#learn">Learn</a>
+          <a href="#curriculum">Curriculum</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#faq">FAQ</a>
+        </div>
+
+        <div class="nav-actions">
+
+          <a
+            href="#pricing"
+            class="btn btn-primary"
+          >
+            Start Learning
+          </a>
+
+          <button
+            id="menuButton"
+            class="menu-button"
+            type="button"
+            aria-label="Open navigation"
+            aria-expanded="false"
+          >
+            ☰
+          </button>
+
+        </div>
+
+      </nav>
+
+      <div
+        id="mobileMenu"
+        class="mobile-menu"
+      >
+        <a href="#learn">Learn</a>
+        <a href="#curriculum">Curriculum</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <main id="top">
+
+    <!-- HERO -->
+
+    <section class="hero container">
+
+      <span class="badge">
+        🐝 THE BEGINNER → CONFIDENT CRYPTO ROADMAP
+      </span>
+
+      <h1>
+        Learn crypto with
+        <span class="yellow-text">
+          clarity.
+        </span>
+
+        <br />
+
+        Not hype.
+      </h1>
+
+      <p class="hero-description">
+        Understand blockchain, Bitcoin, Ethereum,
+        wallets, exchanges, markets, DeFi and risk
+        management before you put real money on the line.
+      </p>
+
+      <div class="hero-actions">
+
+        <a
+          href="#pricing"
+          class="btn btn-primary"
+        >
+          Start the Course →
+        </a>
+
+        <a
+          href="#curriculum"
+          class="btn"
+        >
+          View Curriculum
         </a>
 
       </div>
 
-    </nav>
+      <div class="trust">
+        <span><strong>✓</strong> Beginner Friendly</span>
+        <span><strong>✓</strong> Practical Lessons</span>
+        <span><strong>✓</strong> Security First</span>
+        <span><strong>✓</strong> Lifetime Access</span>
+      </div>
 
-  </div>
-
-</header>
-
-
-<!-- =====================================================
-     MAIN
-===================================================== -->
-
-<main>
+    </section>
 
 
-<!-- HERO -->
+    <!-- STATS -->
 
-<section class="hero container">
+    <div class="container stats">
 
-  <span class="badge">
-    🐝 THE BEGINNER → CONFIDENT CRYPTO ROADMAP
-  </span>
+      <div class="stat">
+        <strong>8</strong>
+        <span>Core Modules</span>
+      </div>
 
+      <div class="stat">
+        <strong>40+</strong>
+        <span>Practical Lessons</span>
+      </div>
 
-  <h1>
+      <div class="stat">
+        <strong>0 → 1</strong>
+        <span>Structured Learning Path</span>
+      </div>
 
-    Learn crypto with
-
-    <span class="yellow-text">
-      clarity.
-    </span>
-
-    <br>
-
-    Not hype.
-
-  </h1>
+    </div>
 
 
-  <p class="hero-description">
+    <!-- LEARN -->
 
-    Understand blockchain, Bitcoin, Ethereum,
-    wallets, exchanges, markets, DeFi and
-    risk management before you put real money
-    on the line.
+    <section
+      id="learn"
+      class="container"
+    >
 
-  </p>
+      <div class="section-head">
+
+        <span class="eyebrow">
+          What You'll Learn
+        </span>
+
+        <h2>
+          Build knowledge before taking risk.
+        </h2>
+
+        <p class="section-description">
+          YellowJacket Crypto focuses on practical
+          crypto literacy — understanding what you're
+          buying, how it works, how to secure it and
+          how to manage downside.
+        </p>
+
+      </div>
+
+      <div class="features">
+
+        <div class="card">
+
+          <div class="card-icon">
+            ₿
+          </div>
+
+          <h3>
+            Crypto Fundamentals
+          </h3>
+
+          <p>
+            Blockchain, Bitcoin, Ethereum,
+            tokens, stablecoins, consensus
+            and real-world utility.
+          </p>
+
+        </div>
 
 
-  <div class="hero-actions">
+        <div class="card">
 
-    <a
-     
+          <div class="card-icon">
+            🔐
+          </div>
+
+          <h3>
+            Wallet Security
+          </h3>
+
+          <p>
+            Private keys, seed phrases,
+            hardware wallets, transaction
+            signing, phishing and scam prevention.
+          </p>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="card-icon">
+            📈
+          </div>
+
+          <h3>
+            Markets & Risk
+          </h3>
+
+          <p>
+            Market cap, liquidity, volatility,
+            position sizing, risk/reward and
+            disciplined decision-making.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CURRICULUM -->
+
+    <section
+      id="curriculum"
+      class="container"
+    >
+
+      <div class="section-head">
+
+        <span class="eyebrow">
+          Curriculum
+        </span>
+
+        <h2>
+          Everything from “What is Bitcoin?”
+          to a personal crypto game plan.
+        </h2>
+
+        <p class="section-description">
+          Each module builds on the previous one,
+          taking a complete beginner through the
+          fundamentals, security, markets and DeFi.
+        </p>
+
+      </div>
+
+
+      <div class="curriculum">
+
+        <div class="lesson">
+
+          <div class="lesson-number">
+            01
+          </div>
+
+          <div>
+            <h3>
+              Crypto 101
+            </h3>
+
+            <p>
+              Blockchain, decentralization,
+              Bitcoin, Ethereum, tokens
+              and stablecoins.
+            </p>
+          </div>
+
+          <span class="lesson-count">
+            5 lessons
+          </span>
+
+        </div>
+
+
+        <div class="lesson">
+
+          <div class="lesson-number">
+            02
+          </div>
+
+          <div>
+            <h3>
+              How Transactions Work
+            </h3>
+
+            <p>
+              Addresses, private keys,
+              gas, confirmations, networks
+              and blockchain explorers.
+            </p>
+          </div>
+
+          <span class="lesson-count">
+            5 lessons
+          </span>
+
+        </div>
+
+
+        <div class="lesson">
+
+          <div class="lesson-number">
+            03
+          </div>
+
+          <div>
+            <h3>
+              Wallets & Security
+            </h3>
+
+            <p>
+              Hot vs. cold storage,
+              seed phrases, approvals,
+              phishing and scam prevention.
+            </p>
+          </div>
+
+          <span class="lesson-count">
+            6 lessons
+          </span>
+
+        </div>
+
+
+        <div class="lesson">
+
+          <div class="lesson-number">
+            04
+          </div>
+
+          <div>
+            <h3>
+              Exchanges & Buying Crypto
+            </h3>
+
+            <p>
+              Custody, fees, order types,
+              deposits, withdrawals
+              and due diligence.
+            </p>
+          </div>
+
+          <span class="lesson-count">
+            5 lessons
+          </span>
+
+        </div>
+
+
+        <div class="lesson">
+
+          <div class="lesson-number">
+            05
+          </div>
+
+          <div>
+            <h3>
+              Reading the Crypto Market
+            </h3>
+
+            <p>
+              Market cap, liquidity,
+              volume, supply, tokenomics
+              and basic chart literacy.
+            </p>
+          </div>
+
+          <span class="lesson-count">
+            6 lessons
+          </span>
+
+        </div>
+
+
+        <div class="lesson">
+
+          <div class="lesson-number">
+            06
+          </div>
+
+          <div>
+            <h3>
+              Trading & Risk Management
+            </h3>
+
+            <p>
+              Position sizing, risk/reward,
+              trade planning and avoiding
+              emotional decisions.
+            </p>
+          </div>
+
+          <span class="lesson-count">
+            6 lessons
+          </span>
+
+        </div>
+
+
+        <div class="lesson">
+
+          <div class="lesson-number">
+            07
+          </div>
+
+          <div>
+            <h3>
+              DeFi & On-Chain Basics
+            </h3>
+
+            <p>
+              DEXs, lending, staking,
+              smart contracts and
+              yield-related risks.
+            </p>
+          </div>
+
+          <span class="lesson-count">
+            4 lessons
+          </span>
+
+        </div>
+
+
+        <div class="lesson">
+
+          <div class="lesson-number">
+            08
+          </div>
+
+          <div>
+            <h3>
+              Build Your Crypto Game Plan
+            </h3>
+
+            <p>
+              Research, risk limits,
+              security rules and a
+              repeatable learning process.
+            </p>
+          </div>
+
+          <span class="lesson-count">
+            3 lessons
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- VALUE -->
+
+    <section class="container">
+
+      <div class="value-grid">
+
+        <div class="value-panel">
+
+          <span class="eyebrow">
+            Why YellowJacket
+          </span>
+
+          <h2>
+            Built for people starting from zero.
+          </h2>
+
+          <div class="checks">
+
+            <div class="check">
+              <span class="check-icon">✓</span>
+              <span>
+                Plain-English explanations
+                before advanced terminology.
+              </span>
+            </div>
+
+            <div class="check">
+              <span class="check-icon">✓</span>
+              <span>
+                Security lessons built directly
+                into the course.
+              </span>
+            </div>
+
+            <div class="check">
+              <span class="check-icon">✓</span>
+              <span>
+                Practical exercises and frameworks.
+              </span>
+            </div>
+
+            <div class="check">
+              <span class="check-icon">✓</span>
+              <span>
+                No guaranteed-return claims
+                or “secret coin” promises.
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="value-panel">
+
+          <span class="eyebrow">
+            Included
+          </span>
+
+          <h2>
+            Learn. Practice. Review.
+          </h2>
+
+          <p class="section-description">
+            Build the course around videos,
+            written lessons, quizzes,
+            worksheets and downloadable
+            security resources.
+          </p>
+
+          <a
+            class="btn btn-primary"
+            href="#pricing"
+          >
+            View Access Options →
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- REVIEWS -->
+
+    <section
+      id="reviews"
+      class="container"
+    >
+
+      <div class="section-head">
+
+        <span class="eyebrow">
+          Student Feedback
+        </span>
+
+        <h2>
+          Built to become a course people recommend.
+        </h2>
+
+        <p class="section-description">
+          Replace the examples below with real,
+          verified student feedback once the course launches.
+        </p>
+
+      </div>
+
+      <div class="testimonials">
+
+        <div class="testimonial">
+
+          <div class="stars">
+            ★★★★★
+          </div>
+
+          <p>
+            “The wallet and security lessons
+            finally made crypto make sense.”
+          </p>
+
+          <div class="student">
+            Example student
+          </div>
+
+        </div>
+
+
+        <div class="testimonial">
+
+          <div class="stars">
+            ★★★★★
+          </div>
+
+          <p>
+            “I finally understood gas,
+            networks and transactions
+            without getting lost.”
+          </p>
+
+          <div class="student">
+            Example student
+          </div>
+
+        </div>
+
+
+        <div class="testimonial">
+
+          <div class="stars">
+            ★★★★★
+          </div>
+
+          <p>
+            “The risk section gave me
+            a much more disciplined way
+            to think about crypto.”
+          </p>
+
+          <div class="student">
+            Example student
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="placeholder-note">
+        These are design placeholders, not actual testimonials.
+      </div>
+
+    </section>
+
+
+    <!-- PRICING -->
+
+    <section
+      id="pricing"
+      class="container"
+    >
+
+      <div class="section-head">
+
+        <span class="eyebrow">
+          Pricing
+        </span>
+
+        <h2>
+          Choose your learning path.
+        </h2>
+
+        <p class="section-description">
+          The purchase buttons below are designed
+          to send customers directly to your Whop checkout.
+        </p>
+
+      </div>
+
+
+      <div class="pricing">
+
+        <div class="price-card">
+
+          <h3>
+            Starter
+          </h3>
+
+          <div class="price">
+
+            $49
+
+            <small>
+              one-time
+            </small>
+
+          </div>
+
+          <ul class="price-list">
+
+            <li>
+              Modules 1–4
+            </li>
+
+            <li>
+              Beginner crypto glossary
+            </li>
+
+            <li>
+              Security checklist
+            </li>
+
+            <li>
+              Lifetime access
+            </li>
+
+          </ul>
+
+          <a
+            href="#"
+            class="btn"
+            data-whop-checkout
+          >
+            Choose Starter
+          </a>
+
+        </div>
+
+
+        <div class="price-card featured">
+
+          <span class="popular">
+            MOST POPULAR
+          </span>
+
+          <h3>
+            Complete
+          </h3>
+
+          <div class="price">
+
+            $99
+
+            <small>
+              one-time
+            </small>
+
+          </div>
+
+          <ul class="price-list">
+
+            <li>
+              All 8 modules
+            </li>
+
+            <li>
+              Research framework
+            </li>
+
+            <li>
+              Risk management worksheet
+            </li>
+
+            <li>
+              Security checklist
+            </li>
+
+            <li>
+              Future course updates
+            </li>
+
+            <li>
+              Lifetime access
+            </li>
+
+          </ul>
+
+          <a
+            href="#"
+            class="btn btn-primary"
+            data-whop-checkout
+          >
+            Get YellowJacket Crypto →
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <p class="pricing-note">
+        YellowJacket Crypto is educational content only.
+        It does not provide individualized financial,
+        investment, tax or legal advice.
+        Crypto assets are volatile and losses can be substantial.
+      </p>
+
+    </section>
+
+
+    <!-- FAQ -->
+
+    <section
+      id="faq"
+      class="container"
+    >
+
+      <div class="section-head">
+
+        <span class="eyebrow">
+          FAQ
+        </span>
+
+        <h2>
+          Questions, answered.
+        </h2>
+
+      </div>
+
+
+      <div class="faq">
+
+        <div class="faq-item">
+
+          <button
+            type="button"
+            class="faq-question"
+            aria-expanded="false"
+          >
+
+            Is YellowJacket Crypto
+            for complete beginners?
+
+            <span class="faq-icon">
+              +
+            </span>
+
+          </button>
+
+          <div class="faq-answer">
+
+            Yes. The course starts with
+            basic crypto concepts before
+            moving into wallets, markets,
+            security, trading concepts and DeFi.
+
+          </div>
+
+        </div>
+
+
+        <div class="faq-item">
+
+          <button
+            type="button"
+            class="faq-question"
+            aria-expanded="false"
+          >
+
+            Does the course tell me
+            what crypto to buy?
+
+            <span class="faq-icon">
+              +
+            </span>
+
+          </button>
+
+          <div class="faq-answer">
+
+            No. YellowJacket Crypto is designed
+            to teach students how crypto works,
+            how to research projects and how
+            to think about risk.
+
+          </div>
+
+        </div>
+
+
+        <div class="faq-item">
+
+          <button
+            type="button"
+            class="faq-question"
+            aria-expanded="false"
+          >
+
+            How do I access the course?
+
+            <span class="faq-icon">
+              +
+            </span>
+
+          </button>
+
+          <div class="faq-answer">
+
+            After purchasing through Whop,
+            you can provide access directly
+            through your Whop product or community.
+
+          </div>
+
+        </div>
+
+
+        <div class="faq-item">
+
+          <button
+            type="button"
+            class="faq-question"
+            aria-expanded="false"
+          >
+
+            Can I use the course on my phone?
+
+            <span class="faq-icon">
+              +
+            </span>
+
+          </button>
+
+          <div class="faq-answer">
+
+            Yes. This website is responsive,
+            and Whop can be used to deliver
+            course access across supported devices.
+
+          </div>
+
+        </div>
+
+
+        <div class="faq-item">
+
+          <button
+            type="button"
+            class="faq-question"
+            aria-expanded="false"
+          >
+
+            Do I need to own crypto already?
+
+            <span class="faq-icon">
+              +
+            </span>
+
+          </button>
+
+          <div class="faq-answer">
+
+            No. You can complete the educational
+            material without purchasing crypto.
+            The course is designed to build knowledge first.
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CTA -->
+
+    <section class="container">
+
+      <div class="cta">
+
+        <span class="eyebrow">
+          Start With Knowledge
+        </span>
+
+        <h2>
+          Stop guessing.
+          Start understanding.
+        </h2>
+
+        <p>
+          Build a crypto foundation you can
+          continue using long after the first lesson.
+        </p>
+
+        <a
+          href="#"
+          class="btn btn-primary"
+          data-whop-checkout
+        >
+          Join YellowJacket Crypto →
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="container footer-row">
+
+      <div>
+
+        <div class="footer-brand">
+          🐝 YellowJacket Crypto
+        </div>
+
+        Practical crypto education
+        for beginners.
+
+      </div>
+
+
+      <div>
+        © 2026 YellowJacket Crypto.
+        Educational content only.
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- TOAST -->
+
+  <div
+    id="toast"
+    class="toast"
+    role="status"
+    aria-live="polite"
+  ></div>
+
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+    document.addEventListener(
+      "DOMContentLoaded",
+      function () {
+
+        /*
+         ============================================
+         ADD YOUR WHOP CHECKOUT LINK HERE
+         ============================================
+        */
+
+        const WHOP_CHECKOUT_URL =
+          "YOUR_WHOP_CHECKOUT_LINK";
+
+
+        /*
+         ============================================
+         TOAST
+         ============================================
+        */
+
+        const toast =
+          document.getElementById("toast");
+
+        let toastTimer;
+
+        function showToast(message) {
+
+          if (!toast) {
+            return;
+          }
+
+          clearTimeout(toastTimer);
+
+          toast.textContent =
+            message;
+
+          toast.classList.add(
+            "show"
+          );
+
+          toastTimer =
+            setTimeout(
+              function () {
+
+                toast.classList.remove(
+                  "show"
+                );
+
+              },
+              3200
+            );
+        }
+
+
+        /*
+         ============================================
+         WHOP CHECKOUT
+         ============================================
+        */
+
+        const checkoutButtons =
+          document.querySelectorAll(
+            "[data-whop-checkout]"
+          );
+
+        checkoutButtons.forEach(
+          function (button) {
+
+            button.addEventListener(
+              "click",
+              function (event) {
+
+                event.preventDefault();
+
+                if (
+                  !WHOP_CHECKOUT_URL ||
+                  WHOP_CHECKOUT_URL ===
+                    "YOUR_WHOP_CHECKOUT_LINK"
+                ) {
+
+                  showToast(
+                    "Add your Whop checkout link in the JavaScript first."
+                  );
+
+                  return;
+                }
+
+                window.location.href =
+                  WHOP_CHECKOUT_URL;
+
+              }
+            );
+
+          }
+        );
+
+
+        /*
+         ============================================
+         FAQ ACCORDION
+         ============================================
+        */
+
+        const faqButtons =
+          document.querySelectorAll(
+            ".faq-question"
+          );
+
+        faqButtons.forEach(
+          function (button) {
+
+            button.addEventListener(
+              "click",
+              function () {
+
+                const item =
+                  button.closest(
+                    ".faq-item"
+                  );
+
+                if (!item) {
+                  return;
+                }
+
+                const wasOpen =
+                  item.classList.contains(
+                    "open"
+                  );
+
+                document
+                  .querySelectorAll(
+                    ".faq-item"
+                  )
+                  .forEach(
+                    function (faqItem) {
+
+                      faqItem.classList.remove(
+                        "open"
+                      );
+
+                      const faqButton =
+                        faqItem.querySelector(
+                          ".faq-question"
+                        );
+
+                      if (faqButton) {
+                        faqButton.setAttribute(
+                          "aria-expanded",
+                          "false"
+                        );
+                      }
+
+                    }
+                  );
+
+                if (!wasOpen) {
+
+                  item.classList.add(
+                    "open"
+                  );
+
+                  button.setAttribute(
+                    "aria-expanded",
+                    "true"
+                  );
+
+                }
+
+              }
+            );
+
+          }
+        );
+
+
+        /*
+         ============================================
+         MOBILE MENU
+         ============================================
+        */
+
+        const menuButton =
+          document.getElementById(
+            "menuButton"
+          );
+
+        const mobileMenu =
+          document.getElementById(
+            "mobileMenu"
+          );
+
+        function closeMobileMenu() {
+
+          if (
+            !menuButton ||
+            !mobileMenu
+          ) {
+            return;
+          }
+
+          mobileMenu.classList.remove(
+            "open"
+          );
+
+          menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+          menuButton.textContent =
+            "☰";
+
+        }
+
+        if (
+          menuButton &&
+          mobileMenu
+        ) {
+
+          menuButton.addEventListener(
+            "click",
+            function () {
+
+              const isOpen =
+                mobileMenu.classList.toggle(
+                  "open"
+                );
+
+              menuButton.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+              );
+
+              menuButton.textContent =
+                isOpen
+                  ? "✕"
+                  : "☰";
+
+            }
+          );
+
+        }
+
+
+        /*
+         ============================================
+         SMOOTH INTERNAL LINKS
+         ============================================
+        */
+
+        const internalLinks =
+          document.querySelectorAll(
+            'a[href^="#"]'
+          );
+
+        internalLinks.forEach(
+          function (link) {
+
+            link.addEventListener(
+              "click",
+              function (event) {
+
+                if (
+                  link.hasAttribute(
+                    "data-whop-checkout"
+                  )
+                ) {
+                  return;
+                }
+
+                const href =
+                  link.getAttribute(
+                    "href"
+                  );
+
+                if (
+                  !href ||
+                  href === "#"
+                ) {
+                  return;
+                }
+
+                const target =
+                  document.querySelector(
+                    href
+                  );
+
+                if (!target) {
+                  return;
+                }
+
+                event.preventDefault();
+
+                closeMobileMenu();
+
+                target.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start"
+                });
+
+              }
+            );
+
+          }
+        );
+
+
+        /*
+         ============================================
+         ESCAPE KEY
+         ============================================
+        */
+
+        document.addEventListener(
+          "keydown",
+          function (event) {
+
+            if (
+              event.key ===
+              "Escape"
+            ) {
+
+              closeMobileMenu();
+
+            }
+
+          }
+        );
+
+      }
+    );
+  </script>
+
+</body>
+</html>
